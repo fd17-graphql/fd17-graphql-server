@@ -5,8 +5,8 @@ tutorial on https://dev-blog.apollodata.com/tutorial-building-a-graphql-server-c
 
 ### _start Apollo server_
 ```
-cd fd17-graphql-server/apollo-starter-kit
-npm start
+> cd fd17-graphql-server/apollo-starter-kit
+> npm start
 ```
 
 ### _run GraphiQL (on Cloud9)_
@@ -15,21 +15,21 @@ https://fd17-graphql-mikhailbro.c9users.io/graphql
 
 ### _start MongoDB_
 ```
-cd fd17-graphql-server
-./mongod
+> cd fd17-graphql-server
+> ./mongod
 ```
 
 ### mongodb cheatsheet
-#### _mongoshell_
+#### _mongoshell:_
 ```
-mongo
+> mongo
 ```
 https://docs.mongodb.com/getting-started/shell/query/
 
 #### _mongoimport_
 ```
-cd fd17-graphql-server
-mongoimport --db fd17 --collection partner --file /db/insert-scripts/insert-fd17-partner.json
+> cd fd17-graphql-server
+> mongoimport --db fd17 --collection partner --file /db/insert-scripts/insert-fd17-partner.json
 ```
 
 
