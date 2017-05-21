@@ -24,7 +24,6 @@ https://fd17-graphql-mikhailbro.c9users.io/graphql
 ```
 > mongo
 ```
-https://docs.mongodb.com/getting-started/shell/query/
 
 
 #### _mongoimport_
