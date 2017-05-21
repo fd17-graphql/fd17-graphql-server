@@ -1,6 +1,6 @@
 # FD17 GRAPHQL SERVER
 
-## GRAPHQL Server with Apollo and NodeJS 
+## GraphQL Server with Apollo and NodeJS 
 tutorial on https://dev-blog.apollodata.com/tutorial-building-a-graphql-server-cddaa023c035
 
 ### _start Apollo server_
@@ -13,17 +13,21 @@ tutorial on https://dev-blog.apollodata.com/tutorial-building-a-graphql-server-c
 https://fd17-graphql-mikhailbro.c9users.io/graphql
 
 
+
 ## MongoDB
 ### _start MongoDB_
 ```
 > cd fd17-graphql-server
 > ./mongod
 ```
+
+
 #### _mongoshell (s. also https://docs.mongodb.com/getting-started/shell/query/)_
 ```
 > mongo
 ```
 https://docs.mongodb.com/getting-started/shell/query/
+
 
 #### _mongoimport_
 ```
