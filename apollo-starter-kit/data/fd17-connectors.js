@@ -1,38 +1,55 @@
 // at the top with imports:
-import Mongoose from 'mongoose';
+import Sequelize from 'sequelize';
+import casual from 'casual';
+import _ from 'lodash';
 
-// where is my mongo?
-const mongo = Mongoose.connect('mongodb://localhost/fd17');
 
-const ContractSchema = Mongoose.Schema({
-  policeNumber: Number,
-  product: String
+// ** Sequelize with Casual **
+const db = new Sequelize('blog', null, null, {
+  dialect: 'sqlite',
+  storage: './blog.sqlite',
 });
 
-const Contract = Mongoose.model('contract', ContractSchema);
+const PartnerModel = db.define('partner', {
+  firstname: { type: Sequelize.STRING },
+  lastname: { type: Sequelize.STRING },
+});
+
+const ContractModel = db.define('contract', {
+  product: { type: Sequelize.STRING },
+});
+
+const ClaimsModel = db.define('claims', {
+  description: { type: Sequelize.STRING },
+});
+
+PartnerModel.hasMany(ContractModel);
+ContractModel.belongsTo(PartnerModel);
+ContractModel.hasMany(ClaimsModel);
+ClaimsModel.belongsTo(ContractModel);
 
 
-// modify the mock data creation to also create some views:
+// create mock data with a seed, so we always get the same
 casual.seed(123);
 db.sync({ force: true }).then(() => {
   _.times(10, () => {
-    return AuthorModel.create({
-      firstName: casual.first_name,
-      lastName: casual.last_name,
-    }).then((author) => {
-      return author.createPost({
-        title: `A post by ${author.firstName}`,
-        text: casual.sentences(3),
-      }).then((post) => { // <- the new part starts here
-        // create some View mocks
-        return View.update(
-          { postId: post.id },
-          { views: casual.integer(0, 100) },
-          { upsert: true });
+    return PartnerModel.create({
+      firstname: casual.first_name,
+      lastname: casual.last_name,
+    }).then((partner) => {
+      return partner.createContract({
+        product: `A contract by ${partner.firstname}. ` + casual.sentences(3),
       });
     });
+//   return ClaimsModel.create({
+//      description: casual.sentences(),
+//    })
   });
 });
 
-// at the bottom, add objects to the exports
+const Partner = db.models.partner;
+const Contract = db.models.contract;
+const Claims = db.models.claims;
+// ** END Sequelize with Casual **
+
 export { Partner, Contract, Claims };

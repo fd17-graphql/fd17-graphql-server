@@ -1,30 +1,30 @@
+import { Partner } from './fd17-connectors';
+import { Contract } from './fd17-connectors';
+import { Claims } from './fd17-connectors';
+
 const resolvers = {
   Query: {
-    partner(root, args){
-      return { partnerNumber: 1, firstname: 'Max', lastname: 'von Dachs', birthday: '2000-01-01', sex: 'female' };
+    partner(_, args) {
+      return Partner.find({ where: args });
+    },
+    contract(_, args) {
+      return Contract.find({ where: args });
+    },
+    claims(_, args) {
+      return Claims.find({ where: args });
     },
   },
   Partner: {
-    contracts(partner){
-      return [
-        { contractNumber: 1, product: 'A police', text: 'Some text', claims: 2},
-        { contractNumber: 2, product: 'Another police', text: 'Some other text', claims: 200}
-      ];
-    },
-    causerOf(claims){
-      return [
-        { claimsNumber: 1, description: 'A claims', claimsSum: 1234567, claimsDate: '2017-05-12', insuredPerson: 22},
-        { claimsNumber: 2, description: 'Another claims', claimsSum: 2000, claimsDate: '2016-12-31', insuredPerson: 33}
-      ];
+    contracts(partner) {
+      return partner.getContracts();
     },
   },
   Contract: {
     insuree(contract) {
-      return contract.getInsuree();
+      return contract.getPartner();
     },
     claims(contract) {
-      return contract.findOne({ contractNumber: contract.contractNumber })
-             .then((claims) => claims.claims);
+      return contract.getClaims();
     },
   },
 };

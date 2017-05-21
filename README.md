@@ -11,6 +11,9 @@ tutorial on https://dev-blog.apollodata.com/tutorial-building-a-graphql-server-c
 https://fd17-graphql-mikhailbro.c9users.io/graphql
 
 
+### GraphQL schema language cheat sheet
+https://wehavefaces.net/graphql-shorthand-notation-cheatsheet-17cd715861b6
+
 
 ## MongoDB
 ### _start MongoDB_
@@ -31,3 +34,8 @@ https://fd17-graphql-mikhailbro.c9users.io/graphql
 > cd fd17-graphql-server
 > mongoimport --db fd17 --collection partner --file /db/insert-scripts/insert-fd17-partner.json
 ```
+
+
+## Casual Fake Data
+### _casual generator_
+https://github.com/boo1ean/casual
