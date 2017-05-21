@@ -20,7 +20,7 @@ https://fd17-graphql-mikhailbro.c9users.io/graphql
 ```
 
 ### mongodb cheatsheet
-#### _mongoshell:_
+#### _mongoshell (s. also https://docs.mongodb.com/getting-started/shell/query/)_
 ```
 > mongo
 ```
