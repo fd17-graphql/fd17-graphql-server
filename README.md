@@ -1,10 +1,3 @@
-                O   OOOOOOO                                           OOOOO  O                                                       
-OOOOOO OOOOO   OO   O    O         OOOO  OOOOO    OO   OOOOO  O    O O     O O              OOOO  OOOOOO OOOOO  O    O OOOOOO OOOOO  
-O      O    O O O       O         O    O O    O  O  O  O    O O    O O     O O             O      O      O    O O    O O      O    O 
-OOOOO  O    O   O      O    OOOOO O      O    O O    O O    O OOOOOO O     O O       OOOOO  OOOO  OOOOO  O    O O    O OOOOO  O    O 
-O      O    O   O     O           O  OOO OOOOO  OOOOOO OOOOO  O    O O   O O O                  O O      OOOOO  O    O O      OOOOO  
-O      O    O   O     O           O    O O   O  O    O O      O    O O    O  O             O    O O      O   O   O  O  O      O   O  
-O      OOOOO  OOOOO   O            OOOO  O    O O    O O      O    O  OOOO O OOOOOOO        OOOO  OOOOOO O    O   OO   OOOOOO O    O 
 
 
 ## GRAPHQL Server with Apollo and NodeJS 
