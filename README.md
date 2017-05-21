@@ -12,14 +12,12 @@ tutorial on https://dev-blog.apollodata.com/tutorial-building-a-graphql-server-c
 ### _run GraphiQL (on Cloud9)_
 https://fd17-graphql-mikhailbro.c9users.io/graphql
 
-
+## _MongoDB_
 ### _start MongoDB_
 ```
 > cd fd17-graphql-server
 > ./mongod
 ```
-
-### mongodb cheatsheet
 #### _mongoshell (s. also https://docs.mongodb.com/getting-started/shell/query/)_
 ```
 > mongo
