@@ -21,7 +21,9 @@ cd fd17-graphql-server
 
 ### mongodb cheatsheet
 #### _mongoshell_
-start with **mongo**
+```
+mongo
+```
 https://docs.mongodb.com/getting-started/shell/query/
 
 #### _mongoimport_
