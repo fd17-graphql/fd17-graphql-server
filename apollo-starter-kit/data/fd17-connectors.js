@@ -1,15 +1,16 @@
 // at the top with imports:
 import Mongoose from 'mongoose';
 
-// somewhere in the middle:
-const mongo = Mongoose.connect('mongodb://localhost/db');
+// where is my mongo?
+const mongo = Mongoose.connect('mongodb://localhost/fd17');
 
-const ViewSchema = Mongoose.Schema({
-  postId: Number,
-  views: Number,
+const ContractSchema = Mongoose.Schema({
+  policeNumber: Number,
+  product: String
 });
 
-const View = Mongoose.model('views', ViewSchema);
+const Contract = Mongoose.model('contract', ContractSchema);
+
 
 // modify the mock data creation to also create some views:
 casual.seed(123);
@@ -33,5 +34,5 @@ db.sync({ force: true }).then(() => {
   });
 });
 
-// at the bottom, add View to the exports
-export { Author, Post, View };
+// at the bottom, add objects to the exports
+export { Partner, Contract, Claims };
