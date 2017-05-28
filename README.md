@@ -15,6 +15,16 @@ https://fd17-graphql-mikhailbro.c9users.io/graphql
 https://wehavefaces.net/graphql-shorthand-notation-cheatsheet-17cd715861b6
 
 
+## Sequelize DB
+### _Querying_
+http://docs.sequelizejs.com/manual/tutorial/querying.html#basics
+
+## Casual Fake Data
+### _casual generator_
+https://github.com/boo1ean/casual
+
+
+
 ## MongoDB
 ### _start MongoDB_
 ```
@@ -22,20 +32,13 @@ https://wehavefaces.net/graphql-shorthand-notation-cheatsheet-17cd715861b6
 > ./mongod
 ```
 
-
 #### _mongoshell (s. also https://docs.mongodb.com/getting-started/shell/query/)_
 ```
 > mongo
 ```
-
 
 #### _mongoimport_
 ```
 > cd fd17-graphql-server
 > mongoimport --db fd17 --collection partner --file /db/insert-scripts/insert-fd17-partner.json
 ```
-
-
-## Casual Fake Data
-### _casual generator_
-https://github.com/boo1ean/casual
