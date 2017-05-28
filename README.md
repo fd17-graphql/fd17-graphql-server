@@ -16,16 +16,13 @@ https://wehavefaces.net/graphql-shorthand-notation-cheatsheet-17cd715861b6
 
 
 ## Sequelize DB
-```
 ### _Querying_
 http://docs.sequelizejs.com/manual/tutorial/querying.html#basics
-```
 
 ## Casual Fake Data
-```
 ### _casual generator_
 https://github.com/boo1ean/casual
-```
+
 
 
 ## MongoDB
