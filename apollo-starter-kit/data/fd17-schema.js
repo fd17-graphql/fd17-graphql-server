@@ -1,37 +1,43 @@
 const typeDefinitions = `
 # Insurance partner
 type Partner {
-  partnerNumber: Int
+  partnerNumber: String!
   firstname: String!
   lastname: String!
-  birthday: String
-  sex: String
+  birthday: String!
+  sex: String!
   contracts: [Contract]
-  # causerOf: [Claims]
+  claims: [Claims]
 }
 
 # Insurance contract
 type Contract {
-  policeNumber: Int
+  policeNumber: String!
   product: String!
-  riskObjects: [String]
+  riskObject: String!
+  insuranceSum: String
   insuree: Partner!
-  claims: Claims
+  claims: [Claims]
 }
 
 # Insurance claims
 type Claims {
-  claimsNumber: Int
+  claimsNumber: String
   description: String
-  claimsSum: Int
+  claimsSum: String
   claimsDate: String
   state: String
+  causer: Partner
 }
+
+
 type Query {
-  partner(firstname: String, lastname: String): Partner
-  contract(product: String): Contract
-  claims(description: String): Claims
+  partners(partnerNumber: String, firstname: String, lastname: String, birthday: String, sex: String): [Partner]
+  contracts(policeNumber: String, product: String, riskObject: String, insuranceSum: String): [Contract]
+  claims(claimsNumber: String, description: String,claimsSum: String, claimsDate: String, state: String): Claims
 }
+
+
 schema {
   query: Query
 }

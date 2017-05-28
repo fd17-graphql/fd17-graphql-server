@@ -4,19 +4,22 @@ import { Claims } from './fd17-connectors';
 
 const resolvers = {
   Query: {
-    partner(_, args) {
-      return Partner.find({ where: args });
+    partners(_, args) {
+      return Partner.findAll({ where: args });
     },
-    contract(_, args) {
-      return Contract.find({ where: args });
+    contracts(_, args) {
+      return Contract.findAll({ where: args });
     },
     claims(_, args) {
-      return Claims.find({ where: args });
+      return Claims.findAll({ where: args });
     },
   },
   Partner: {
     contracts(partner) {
       return partner.getContracts();
+    },
+    claims(partner) {
+      return partner.getClaims();
     },
   },
   Contract: {
@@ -25,6 +28,11 @@ const resolvers = {
     },
     claims(contract) {
       return contract.getClaims();
+    },
+  },
+  Claims: {
+    causer(claims) {
+      return claims.getPartner();
     },
   },
 };

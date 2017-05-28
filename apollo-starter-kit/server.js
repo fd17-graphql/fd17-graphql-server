@@ -1,7 +1,7 @@
 import express from 'express';
 import { apolloServer } from 'graphql-tools';
 import Schema from './data/fd17-schema';
-import Mocks from './data/fd17-mocks';
+//import Mocks from './data/fd17-mocks';
 import Resolvers from './data/fd17-resolvers';
 
 const GRAPHQL_PORT = 8080;
