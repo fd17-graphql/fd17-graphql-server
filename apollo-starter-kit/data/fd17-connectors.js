@@ -57,19 +57,21 @@ db.sync({ force: true }).then(() => {
           product: `A contract by ${partner.firstname}. ` + casual.sentences(3),
           riskObject: casual.random_element(['house', 'car', 'bike', 'jewelry', 'art', 'little red pony']),
           insuranceSum: casual.random_element(['1000000', '250000', '500000', '100000', '200000', '350000', '2000000', '50000', '25000', '750000']),
-        });
+          
+        })
       })
+    }).then((partner) => {
+       _.times(Math.floor((Math.random() * 2) + 1), () => {
+         return ClaimsModel.create({
+         //return partner.createClaims({
+          claimsNumber: casual.uuid,
+          description: casual.sentences(3),
+          claimsSum: casual.random_element(['10000000', '250000', '1000', '100000', '10000', '50000', '25000', '300000']),
+          claimsDate: casual.date(dateFormat),
+          state: casual.random_element(['reported', 'clearing', 'closed']),
+        })
+       })
     })
-
-//      .then (contract)  => {
-//     return contract.createClaims({
- //       claimsNumber: casual.uuid,
-//        description: casual.sentences,
- //       claimsSum: casual.random_element(['10000000', '250000', '1000', '100000', '10000', '50000', '25000', '300000']),
- //       claimsDate: casual.date(dateFormat),
- //       state: casual.random_element(['reported', 'clearing', 'closed']),
- //     });
-//    })
 
   });
 });
