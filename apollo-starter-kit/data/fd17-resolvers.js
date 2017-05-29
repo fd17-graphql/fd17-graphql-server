@@ -10,7 +10,7 @@ const resolvers = {
       return Partner.findAll({ where: args });
     },
     contracts(_, args) {
-      return Contract.findAll({ where: args, order: [  ['riskObject', 'DESC'] ] });
+      return Contract.findAll({ where: args, order: [  ['riskObjects', 'DESC'] ] });
     },
     claims(_, args) {
       return Claims.findAll({ where: args });

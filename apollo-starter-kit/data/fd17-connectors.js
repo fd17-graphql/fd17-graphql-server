@@ -21,7 +21,7 @@ const PartnerModel = db.define('partner', {
 const ContractModel = db.define('contract', {
   policeNumber: { type: Sequelize.UUID, primaryKey: true, allowNull: false },
   product: { type: Sequelize.STRING, allowNull: false },
-  riskObject: { type: Sequelize.STRING, allowNull: false }, 
+  riskObjects: { type: Sequelize.STRING, allowNull: false }, 
   insuranceSum: { type: Sequelize.INTEGER, allowNull: false }, 
 });
 
@@ -55,7 +55,7 @@ db.sync({ force: true }).then(() => {
           return partner.createContract({
           policeNumber: casual.uuid,
           product: `A contract by ${partner.firstname}. ` + casual.sentences(3),
-          riskObject: casual.random_element(['house', 'car', 'bike', 'jewelry', 'art', 'little red pony']),
+          riskObjects: casual.random_element(['car', 'bike', 'little red pony', '']) + "," + casual.random_element(['house', 'jewelry', 'art', '']),
           insuranceSum: casual.random_value({ a: 1000000, b: 250000, c: 500000, d: 100000, e: 200000, f: 350000, g: 2000000, h: 50000, i: 25000, j: 750000  }),
           
         })
