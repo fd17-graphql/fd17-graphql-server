@@ -15,26 +15,29 @@ const resolvers = {
     claims(_, args) {
       return Claims.findAll({ where: args });
     },
+    claim(_, args) {
+      return Claims.find({ where: args });
+    },
   },
+  
   Partner: {
-    contracts(partner) {
+    myContracts(partner) {
       return partner.getContracts();
     },
-    claims(partner) {
+    myClaims(partner) {
       return partner.getClaims();
     },
+    causedByMe(partner) {
+      return partner.getClaim();
+    }
   },
+  
   Contract: {
     insuree(contract) {
       return contract.getPartner();
     },
-    claims(contract) {
+    contractClaims(contract) {
       return contract.getClaims();
-    },
-  },
-  Claims: {
-    causer(claims) {
-      return claims.getPartner();
     },
   },
 };

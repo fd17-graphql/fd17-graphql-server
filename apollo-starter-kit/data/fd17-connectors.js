@@ -33,10 +33,14 @@ const ClaimsModel = db.define('claims', {
   state: { type: Sequelize.STRING },
 });
 
+
 PartnerModel.hasMany(ContractModel);
+PartnerModel.hasMany(ClaimsModel);
+
 ContractModel.belongsTo(PartnerModel);
 ContractModel.hasMany(ClaimsModel);
-ClaimsModel.belongsTo(ContractModel);
+
+PartnerModel.hasOne(ClaimsModel, {as: 'causedByMe'});
 
 
 // create mock data with a seed, so we always get the same
@@ -54,14 +58,14 @@ db.sync({ force: true }).then(() => {
       _.times(Math.floor((Math.random() * 5) + 1), () => {
           return partner.createContract({
           policeNumber: casual.uuid,
-          product: `A contract by ${partner.firstname}. ` + casual.sentences(3),
+          product: `${partner.firstname}'s contract. ` + casual.sentences(3),
           riskObjects: casual.random_element(['car', 'bike', 'little red pony', '']) + "," + casual.random_element(['house', 'jewelry', 'art', '']),
           insuranceSum: casual.random_value({ a: 1000000, b: 250000, c: 500000, d: 100000, e: 200000, f: 350000, g: 2000000, h: 50000, i: 25000, j: 750000  }),
           
         })
       })
     }).then((contract) => {
-       _.times(Math.floor((Math.random() * 2) + 1), () => {
+       _.times(Math.floor((Math.random() * 2)), () => {
          return ClaimsModel.create({
          //return contract.createClaims({
           claimsNumber: casual.uuid,

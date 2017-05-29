@@ -19,6 +19,9 @@ https://wehavefaces.net/graphql-shorthand-notation-cheatsheet-17cd715861b6
 ### _Querying_
 http://docs.sequelizejs.com/manual/tutorial/querying.html#basics
 
+### _Associations_
+http://docs.sequelizejs.com/manual/tutorial/associations.html#belongsto
+
 ## Casual Fake Data
 ### _casual generator_
 https://github.com/boo1ean/casual
