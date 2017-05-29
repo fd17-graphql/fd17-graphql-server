@@ -1,4 +1,3 @@
-// at the top with imports:
 import Sequelize from 'sequelize';
 import casual from 'casual';
 import _ from 'lodash';
