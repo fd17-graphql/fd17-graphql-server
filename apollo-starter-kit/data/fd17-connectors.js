@@ -11,32 +11,32 @@ const db = new Sequelize('blog', null, null, {
 });
 
 const PartnerModel = db.define('partner', {
-  partnerNumber: { type: Sequelize.UUID, primaryKey: true },
-  firstname: { type: Sequelize.STRING },
-  lastname: { type: Sequelize.STRING },
-  birthday: { type: Sequelize.DATE },
-  sex: { type: Sequelize.STRING },
+  partnerNumber: { type: Sequelize.UUID, primaryKey: true, allowNull: false },
+  firstname: { type: Sequelize.STRING, allowNull: false },
+  lastname: { type: Sequelize.STRING, allowNull: false},
+  birthday: { type: Sequelize.DATE, allowNull: false },
+  sex: { type: Sequelize.STRING, allowNull: false },
 });
 
 const ContractModel = db.define('contract', {
-  policeNumber: { type: Sequelize.UUID, primaryKey: true },
-  product: { type: Sequelize.STRING },
-  riskObject: { type: Sequelize.STRING }, 
-  insuranceSum: { type: Sequelize.STRING }, 
+  policeNumber: { type: Sequelize.UUID, primaryKey: true, allowNull: false },
+  product: { type: Sequelize.STRING, allowNull: false },
+  riskObject: { type: Sequelize.STRING, allowNull: false }, 
+  insuranceSum: { type: Sequelize.INTEGER, allowNull: false }, 
 });
 
 const ClaimsModel = db.define('claims', {
-  claimsNumber: { type: Sequelize.UUID, primaryKey: true },
+  claimsNumber: { type: Sequelize.UUID, primaryKey: true, allowNull: false },
   description: { type: Sequelize.STRING },
-  claimsSum: { type: Sequelize.STRING },
-  claimsDate: { type: Sequelize.DATE },
+  claimsSum: { type: Sequelize.INTEGER, allowNull: false },
+  claimsDate: { type: Sequelize.DATE, allowNull: false },
   state: { type: Sequelize.STRING },
 });
 
 PartnerModel.hasMany(ContractModel);
 ContractModel.belongsTo(PartnerModel);
-PartnerModel.hasMany(ClaimsModel);
-ClaimsModel.belongsTo(PartnerModel);
+ContractModel.hasMany(ClaimsModel);
+ClaimsModel.belongsTo(ContractModel);
 
 
 // create mock data with a seed, so we always get the same
@@ -56,17 +56,17 @@ db.sync({ force: true }).then(() => {
           policeNumber: casual.uuid,
           product: `A contract by ${partner.firstname}. ` + casual.sentences(3),
           riskObject: casual.random_element(['house', 'car', 'bike', 'jewelry', 'art', 'little red pony']),
-          insuranceSum: casual.random_element(['1000000', '250000', '500000', '100000', '200000', '350000', '2000000', '50000', '25000', '750000']),
+          insuranceSum: casual.random_value({ a: 1000000, b: 250000, c: 500000, d: 100000, e: 200000, f: 350000, g: 2000000, h: 50000, i: 25000, j: 750000  }),
           
         })
       })
-    }).then((partner) => {
+    }).then((contract) => {
        _.times(Math.floor((Math.random() * 2) + 1), () => {
          return ClaimsModel.create({
-         //return partner.createClaims({
+         //return contract.createClaims({
           claimsNumber: casual.uuid,
           description: casual.sentences(3),
-          claimsSum: casual.random_element(['10000000', '250000', '1000', '100000', '10000', '50000', '25000', '300000']),
+          claimsSum: casual.random_value({a: 10000000, b: 250000, c: 1000, d: 100000, e: 10000, f: 50000, g: 25000, h: 300000}),
           claimsDate: casual.date(dateFormat),
           state: casual.random_element(['reported', 'clearing', 'closed']),
         })
