@@ -1,5 +1,5 @@
 ## GraphQL Server with Apollo and NodeJS 
-tutorial on https://dev-blog.apollodata.com/tutorial-building-a-graphql-server-cddaa023c035
+#### tutorial on https://dev-blog.apollodata.com/tutorial-building-a-graphql-server-cddaa023c035
 
 ### _start Apollo server_
 ```
@@ -35,13 +35,22 @@ https://github.com/boo1ean/casual
 > ./mongod
 ```
 
-#### _mongoshell (s. also https://docs.mongodb.com/getting-started/shell/query/)_
+
+#### _mongoimport auf heroku_
 ```
-> mongo
+> cd fd17-graphql-server/db/insert-scripts
+> mongoimport --host ds157521.mlab.com:57521 --db fd2017mongodb -u admin -p fd2017 --collection partner --file insert-fd17-partner.json
+> mongoimport --host ds157521.mlab.com:57521 --db fd2017mongodb -u admin -p fd2017 --collection contract --file insert-fd17-contract.json 
+> mongoimport --host ds157521.mlab.com:57521 --db fd2017mongodb -u admin -p fd2017 --collection claims --file insert-fd17-claims.json 
 ```
 
-#### _mongoimport_
+
+#### _mongoshell auf heroku (s. cheat sheet: https://docs.mongodb.com/manual/reference/mongo-shell/)_
 ```
-> cd fd17-graphql-server
-> mongoimport --db fd17 --collection partner --file /db/insert-scripts/insert-fd17-partner.json
+> mongo
+_rs-ds157521:PRIMARY_> use fd2017mongodb
+_rs-ds157521:PRIMARY_> show collections
+_rs-ds157521:PRIMARY_> db.partner.find()
+_rs-ds157521:PRIMARY_> db.contract.find()
+_rs-ds157521:PRIMARY_> db.claims.find()
 ```
